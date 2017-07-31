@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>搭建个人github.io博客 | Hexo</title>
+  <meta name="description" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  <meta name="generator" content="Hexo">
+
+  
+  
+  
+
+  
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body class="home-template">
+<div id="perspective" class="perspective effect-movedown">
+  <div class="container">
+    <!-- wrapper -->
+    <div class="wrapper">
+
+      <header class="site-head"  style="background: #24282b url(/img/img-bg.jpg) 0 -20%" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="/img/logo.svg" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Hexo</h1>
+            <h2 class="blog-description"><button id="showMenu">Show Menu</button></h2>
+        </div>
+    </div>
+</header>
+
+      
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2017-07-28T03:31:05.000Z" itemprop="datePublished">
+          2017-07-28
+      </time>
+    
+    
+    | 
+    <a href='/tags/Skill/'>Skill</a>
+    
+    
+</span>
+    <h1 class="post-title">搭建个人github.io博客</h1>
+    <section class="post-content">
+      <h2 id="环境要求"><a href="#环境要求" class="headerlink" title="环境要求"></a>环境要求</h2><ul>
+<li>Node</li>
+<li>Git</li>
+<li>GitHub账户</li>
+<li>Hexo</li>
+</ul>
+<hr>
+<h2 id="安装HEXO"><a href="#安装HEXO" class="headerlink" title="安装HEXO"></a>安装HEXO</h2><ol>
+<li><p>打开终端，执行如下命令<br><code>npm install -g hexo (win)</code><br><code>sudo npm install -g hexo (unix)</code></p>
+</li>
+<li><p>创建文件夹<br><code>mkdir blog</code></p>
+</li>
+<li><p>进入文件夹<br><code>cd blog</code></p>
+</li>
+<li><p>项目初始化<br><code>hexo init</code></p>
+</li>
+</ol>
+<a id="more"></a>
+<ol>
+<li><p>生成静态页面<br><code>hexo generate</code></p>
+</li>
+<li><p>生成静态页面(hexo版本3.3.8自带server)<br><code>hexo server</code></p>
+</li>
+<li><p>打开浏览器，输入<code>localhost:4000</code>，即可进入博客</p>
+</li>
+</ol>
+<hr>
+<h2 id="部署到远端GitHub仓库"><a href="#部署到远端GitHub仓库" class="headerlink" title="部署到远端GitHub仓库"></a>部署到远端GitHub仓库</h2><p>1.打开您的Github,选择<code>Create New Repository</code>创建一个新项目库<br>仓库名称命名格式必须为：<em>你的github账户名称.github.io</em> </p>
+<ol>
+<li>配置vim _config.yml<br>打开项目根目录的vim _config.yml。下拉到最后</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repository:</div></pre></td></tr></table></figure>
+<p>改为如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  type: git</div><div class="line">  repository: https://github.com/你的github账户名称/你的github账户名称.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure>
+<ol>
+<li><p>打开终端，执行如下命令，安装hexo git部署器<br><code>npm install hexo-deployer-git --save</code></p>
+</li>
+<li><p>打开终端，执行如下命令，部署到github<br><code>hexo deploy</code></p>
+</li>
+<li><p>打开浏览器，输入<code>http://你的github账户名称.github.io/</code>，即可进入博客</p>
+</li>
+</ol>
+<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><p>1.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">F：如何让文章想只显示一部分和一个 阅读全文 的按钮？ </div><div class="line">A：在文章中加一个 `&lt;!--more--&gt;` ， `&lt;!--more--&gt;` 后面的内容就不会显示出来了。</div></pre></td></tr></table></figure></p>
+<p>2.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">F：部署到Github仓库后，打开浏览器访问出现的是 404 Page</div><div class="line">A: 1.执行 `hexo d` 命令检查是否报错 2.检查仓库名称是否正确 3.可能存在延迟,刷新</div></pre></td></tr></table></figure></p>
+<p>3.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">F：我终端打开了 `hexo server`，怎么关闭</div><div class="line">A: 在终端窗口按下 `Ctrl + C`</div></pre></td></tr></table></figure></p>
+<p>4.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">F：我以后要发布新博客怎么办？</div><div class="line">A: </div><div class="line">- 第一种方法 直接把写好的markdown文件放在 *path/to/project/source/_posts*  目录下,markdown文档开头格式为</div><div class="line"></div><div class="line">---</div><div class="line">title: 你的标题</div><div class="line">date: 发布时间</div><div class="line">tags: 你的标签</div><div class="line">---</div><div class="line"></div><div class="line">- 第二种方法  </div><div class="line">    1.打开终端,切换到项目目录 `cd path/to/project`</div><div class="line">    2.然后执行 `hexo new &quot;New Post&quot;`会生成一个markdown文件</div><div class="line">    3.然后`cd source/_posts`，使用你的编辑工具编辑你新创建的markdown文件</div></pre></td></tr></table></figure></p>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>John Doe</h4>
+    <p></p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-sina-weibo" href="http://v.t.sina.com.cn/share/share.php?title= ?url=http://yoursite.com/2017/07/28/20170728/" target="_blank">
+        <span class="hidden">weibo</span>
+    </a>
+    <a class="icon-twitter" href="http://twitter.com/share?url=http://yoursite.com/2017/07/28/20170728/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/07/28/20170728/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=http://yoursite.com/2017/07/28/20170728/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/2017/07/28/tips/">
+        ← HTML移动端应该注意的一些玩意
+    </a>
+    
+    <span class="icon-logo">•</span>
+    
+    <a class="older-posts" href="/2017/07/28/hello-world/">
+        Hello World →
+    </a>
+    
+</nav>
+
+  <div id="comment" class="comments-area">
+    <h4 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h4>
+    
+</div>
+
+</main>
+
+
+      
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Hexo</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+<script type="text/javascript" src="/js/menu.js"></script>
+
+
+
+
+
+  </div>
+</div>
+
+<nav  class="outer-nav top horizontal">
+
+          <a class="icon-home"  href="/"><span>Home</span></a>
+
+          <a class="icon-news"  href="/archive"><span>Archive</span></a>
+
+          <a class="icon-image"  href="/images"><span>Images</span></a>
+
+          <a class="icon-wiki"  href="/wiki/2014-10-28-wiki/"><span>Wiki</span></a>
+
+          <a class="icon-Favorites"  href="/favorites"><span>Favorites</span></a>
+
+          <a class="icon-mail"  href="/about/2014-09-11-mabao/"><span>Contact</span></a>
+
+</nav>
+
+</div>
+</body>
+</html>
